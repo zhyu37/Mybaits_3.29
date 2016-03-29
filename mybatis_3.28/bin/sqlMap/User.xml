@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，为了对sql语句进行隔离，方便管理 ，mapper开发dao方式，使用namespace有特殊作用 -->
+<mapper namespace="test">
+
+	<!-- 根据id查询用户信息 -->
+	<!-- 
+		id：唯一标识 一个statement
+		#{}：表示 一个占位符，如果#{}中传入简单类型的参数，#{}中的名称随意
+		parameterType：输入 参数的类型，通过#{}接收parameterType输入 的参数
+		resultType：输出结果 类型，不管返回是多条还是单条，指定单条记录映射的pojo类型
+	 -->
+	<select id="findUserById" parameterType="int" resultType="mybaits_po.User">
+		select * from user where id = #{id}
+	</select>
+	
+	<!-- 根据用户名称查询用户信息，可能返回多条
+	${}：表示sql的拼接，通过${}接收参数，将参数的内容不加任何修饰拼接在sql中。
+	
+	 -->
+	 <!-- warning 为什么不能叫name  啊啊啊啊啊  坑死我算了 -->
+	<select id="findUserByName" parameterType="java.lang.String" resultType="mybaits_po.User">
+		select * from user where username like '%${value}%'
+	</select>
+
+</mapper> 
