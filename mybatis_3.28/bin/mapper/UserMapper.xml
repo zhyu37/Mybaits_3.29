@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- namespace命名空间，为了对sql语句进行隔离，方便管理 ，mapper开发dao方式，使用namespace有特殊作用 -->
-<mapper namespace="test">
+<mapper namespace="mybaits.mapper.UserMapper">
 
 	<!-- 根据id查询用户信息 -->
 	<!-- 
